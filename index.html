@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeTrade | $1,000,000 Million Dollar Live Trading Competition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FA5000;
+  --amber:#FFAA3C;
+  --black:#000;
+  --d1:#080808;
+  --d2:#0F0F0F;
+  --d3:#171717;
+  --d4:#1F1F1F;
+  --border:rgba(255,255,255,0.07);
+  --border-o:rgba(250,80,0,0.2);
+  --muted:rgba(255,255,255,0.38);
+  --muted2:rgba(255,255,255,0.65);
+  --white:#fff;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:400;overflow-x:hidden;line-height:1.6}
+#fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.45}
+section,nav,footer,.tw,.ab{position:relative;z-index:1}
+
+/* ── NAV ── */
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5rem;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(0,0,0,0.93);backdrop-filter:blur(18px)}
+.nav-logo img{height:34px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:2.2rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.74rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--orange)!important;color:#fff!important;padding:0.6rem 1.4rem;border-radius:3px;box-shadow:0 0 22px rgba(250,80,0,0.3);transition:all 0.2s!important}
+.nav-cta:hover{background:var(--amber)!important;color:#000!important;box-shadow:0 0 40px rgba(250,80,0,0.55)!important}
+
+/* ── TICKER ── */
+.tw{overflow:hidden;background:#090909;border-bottom:1px solid var(--border);padding:0.52rem 0}
+.tk{display:flex;white-space:nowrap;animation:tk 38s linear infinite}
+.ti{display:inline-flex;align-items:center;gap:0.6rem;padding:0 2rem;font-size:0.7rem;font-weight:600;color:var(--muted);border-right:1px solid var(--border)}
+.ts{color:var(--white)}
+.up{color:#22C77A}
+.dn{color:#FF3C3C}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HERO ── */
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 5rem;position:relative;overflow:hidden}
+.hglow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(ellipse,rgba(250,80,0,0.09) 0%,rgba(255,170,60,0.03) 40%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-58%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(250,80,0,0.3);background:rgba(250,80,0,0.06);padding:0.4rem 1.1rem;border-radius:2px;font-size:0.63rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:2rem;animation:fu 0.7s ease both}
+.pulse{width:7px;height:7px;background:var(--orange);border-radius:50%;animation:bl 1.4s infinite;flex-shrink:0}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:0.15}}
+.h-cat{font-size:0.76rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;animation:fu 0.7s 0.07s ease both}
+.h-amt{font-size:clamp(4rem,13vw,9rem);font-weight:900;letter-spacing:-0.055em;line-height:0.87;background:linear-gradient(120deg,#fff 0%,var(--amber) 50%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fu 0.7s 0.13s ease both}
+.h-title{font-size:clamp(1.2rem,3vw,2rem);font-weight:700;color:var(--white);margin-top:1rem;letter-spacing:-0.025em;animation:fu 0.7s 0.19s ease both}
+.h-sub{font-size:clamp(0.83rem,1.5vw,0.96rem);font-weight:400;color:var(--muted2);max-width:520px;margin:1.1rem auto 0;line-height:1.8;animation:fu 0.7s 0.25s ease both}
+.h-btns{display:flex;gap:0.9rem;margin-top:2.8rem;justify-content:center;flex-wrap:wrap;animation:fu 0.7s 0.31s ease both}
+.btn-p{background:var(--orange);color:#fff;padding:1rem 2.4rem;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;transition:all 0.25s;box-shadow:0 0 35px rgba(250,80,0,0.35);display:inline-block}
+.btn-p:hover{background:var(--amber);color:#000;box-shadow:0 0 55px rgba(250,80,0,0.55);transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--white);padding:1rem 2.4rem;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.18);text-decoration:none;transition:all 0.25s;display:inline-block}
+.btn-o:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+.tpills{display:flex;align-items:center;gap:0.8rem;margin-top:2.8rem;justify-content:center;flex-wrap:wrap;animation:fu 0.7s 0.37s ease both}
+.tp{display:flex;align-items:center;gap:0.45rem;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:2px;padding:0.42rem 0.85rem;font-size:0.68rem;font-weight:600;color:var(--muted2);letter-spacing:0.04em;white-space:nowrap}
+.tp svg{width:12px;height:12px;stroke:var(--orange);fill:none;stroke-width:2.2;flex-shrink:0}
+
+/* ── DIVIDER ── */
+.divider{width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--orange) 30%,var(--amber) 65%,transparent)}
+
+/* ── STATS ── */
+.stats{background:var(--d2);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr)}
+.sc{padding:2.2rem 1rem;text-align:center;border-right:1px solid var(--border);opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease}
+.sc:last-child{border-right:none}
+.sc.v{opacity:1;transform:translateY(0)}
+.sn{font-size:2.2rem;font-weight:900;letter-spacing:-0.05em;background:linear-gradient(135deg,var(--orange),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.sl{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:0.45rem}
+
+/* ── SECTIONS ── */
+.sw{padding:6rem 3rem}
+.sw.bg{background:var(--d2)}
+.sh{text-align:center;margin-bottom:4rem}
+.scat{font-size:0.63rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:0.8rem}
+.stitle{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;color:var(--white);line-height:1.1}
+.stitle .o{color:var(--orange)}
+.ssub{font-size:0.86rem;font-weight:400;color:var(--muted);margin-top:0.7rem}
+
+/* ── COUNTDOWN ── */
+.cdb{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:3rem}
+.cbox{background:var(--d3);border:1px solid var(--border);border-radius:4px;padding:1.8rem 2rem;min-width:108px;text-align:center;position:relative;overflow:hidden}
+.cbox::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--amber))}
+.cn{font-size:3.2rem;font-weight:900;letter-spacing:-0.06em;color:var(--white);display:block;line-height:1}
+.cl{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-top:0.45rem;display:block}
+.csep{font-size:2.8rem;font-weight:900;color:rgba(250,80,0,0.28);align-self:center;padding-bottom:1.1rem}
+
+/* ── PRIZES ── */
+.podium{max-width:1060px;margin:0 auto}
+.pg{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:1rem;align-items:end}
+.pc{background:var(--d3);border:1px solid var(--border);border-radius:6px;padding:2.2rem 1.5rem;text-align:center;position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.pc.v{opacity:1;transform:translateY(0)}
+.pc.champ{border-color:rgba(250,80,0,0.38);background:linear-gradient(160deg,rgba(250,80,0,0.08) 0%,var(--d3) 60%)}
+.pc.champ::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--amber),var(--orange))}
+.pp{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.pm{font-size:2.6rem;display:block;margin-bottom:0.8rem}
+.pa{font-size:2.3rem;font-weight:900;letter-spacing:-0.04em;color:var(--white);line-height:1}
+.champ .pa{font-size:3.4rem;background:linear-gradient(135deg,var(--orange),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pn{font-size:0.73rem;color:var(--muted);margin-top:0.6rem;line-height:1.55}
+.ptag{display:inline-block;margin-top:0.9rem;padding:0.25rem 0.9rem;border-radius:2px;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(250,80,0,0.09);border:1px solid rgba(250,80,0,0.22);color:var(--amber)}
+.plower{margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0.7rem}
+.pr{background:var(--d3);border:1px solid var(--border);border-radius:4px;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center}
+.prl{font-size:0.72rem;font-weight:500;color:var(--muted)}
+.prv{font-size:1.15rem;font-weight:800;color:var(--white);letter-spacing:-0.02em}
+
+/* ── STEPS ── */
+.steps-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;max-width:1060px;margin:3.5rem auto 0}
+.step{background:var(--black);padding:2.8rem 2rem;position:relative;opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease}
+.step.v{opacity:1;transform:translateY(0)}
+.step-bg{position:absolute;top:1.5rem;right:1.8rem;font-size:5rem;font-weight:900;letter-spacing:-0.06em;color:rgba(250,80,0,0.05);line-height:1}
+.step-ico{width:46px;height:46px;background:rgba(250,80,0,0.07);border:1px solid rgba(250,80,0,0.18);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
+.step-ico svg{width:20px;height:20px;stroke:var(--orange);fill:none;stroke-width:1.8}
+.step-t{font-size:0.98rem;font-weight:700;color:var(--white);margin-bottom:0.7rem}
+.step-d{font-size:0.82rem;font-weight:400;color:var(--muted);line-height:1.75}
+
+/* ── AWARDS ── */
+.ab{background:var(--d2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 3rem}
+.ab-in{max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.ab-lbl{font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);flex-shrink:0}
+.aw{display:flex;align-items:center;gap:0.6rem;background:var(--d3);border:1px solid var(--border);border-radius:4px;padding:0.55rem 1rem;transition:border-color 0.2s}
+.aw:hover{border-color:var(--border-o)}
+.aw-ico{font-size:1rem}
+.aw-txt strong{display:block;font-size:0.7rem;font-weight:700;color:var(--white)}
+.aw-txt span{font-size:0.6rem;font-weight:400;color:var(--muted)}
+
+/* ── FEATURES ── */
+.feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1060px;margin:3.5rem auto 0}
+.feat{background:var(--d3);border:1px solid var(--border);border-radius:6px;padding:1.8rem 1.5rem;opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease,border-color 0.25s}
+.feat:hover{border-color:var(--border-o)}
+.feat.v{opacity:1;transform:translateY(0)}
+.fi{width:42px;height:42px;background:rgba(255,170,60,0.06);border:1px solid rgba(255,170,60,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+.fi svg{width:18px;height:18px;stroke:var(--amber);fill:none;stroke-width:1.8}
+.ft{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:0.5rem}
+.fd{font-size:0.79rem;font-weight:400;color:var(--muted);line-height:1.75}
+
+/* ── REGISTER ── */
+.reg-sec{padding:5.5rem 3rem;background:var(--d1);position:relative;overflow:hidden}
+.reg-sec::before{content:'';position:absolute;width:800px;height:700px;border-radius:50%;background:radial-gradient(ellipse,rgba(250,80,0,0.07) 0%,transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.reg-in{max-width:800px;margin:0 auto;position:relative}
+.reg-hd{text-align:center;margin-bottom:3rem}
+.iframe-shell{background:var(--d3);border:1px solid var(--border-o);border-radius:8px;overflow:hidden;box-shadow:0 0 60px rgba(250,80,0,0.07),0 40px 80px rgba(0,0,0,0.5)}
+.iframe-shell iframe{display:block;width:100%;min-height:750px;border:none}
+.reg-foot{text-align:center;margin-top:1.5rem;font-size:0.67rem;font-weight:400;color:var(--muted);line-height:1.7}
+.reg-foot a{color:rgba(255,170,60,0.65);text-decoration:none}
+.reg-foot a:hover{color:var(--amber)}
+
+/* ── FOOTER ── */
+footer{background:var(--d1);border-top:1px solid var(--border);padding:4rem 5rem 2.5rem}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2.5rem;padding-bottom:2.5rem;margin-bottom:2rem;border-bottom:1px solid var(--border)}
+.ft-brand{max-width:255px}
+.ft-logo{height:28px;width:auto;display:block;margin-bottom:0.9rem;opacity:0.9;filter:brightness(1.05)}
+.ft-tag{font-size:0.7rem;font-weight:400;color:var(--muted);line-height:1.7}
+.ft-links{display:flex;gap:4rem}
+.fcol h4{font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:1.2rem}
+.fcol a{display:block;font-size:0.76rem;font-weight:400;color:var(--muted);text-decoration:none;margin-bottom:0.55rem;transition:color 0.2s}
+.fcol a:hover{color:var(--white)}
+.ft-bot{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.2rem}
+.ft-legal{font-size:0.64rem;font-weight:400;color:rgba(255,255,255,0.2);line-height:1.75;max-width:700px}
+.fbadges{display:flex;gap:0.6rem;flex-wrap:wrap;align-self:flex-start;margin-top:0.1rem}
+.fb{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:2px;padding:0.25rem 0.7rem;font-size:0.58rem;font-weight:700;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pg{grid-template-columns:1fr}
+  .pg .pc:nth-child(2){order:-1}
+  .plower{grid-template-columns:1fr}
+  .steps-g{grid-template-columns:1fr}
+  .feat-g{grid-template-columns:1fr 1fr}
+  .sw{padding:4rem 1.5rem}
+  .reg-sec{padding:4rem 1.5rem}
+  footer{padding:3rem 1.5rem 2rem}
+  .ft-links{gap:2rem}
+}
+@media(max-width:520px){.feat-g{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="fc"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="data:image/png;base64,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" alt="WeTrade"></div>
+  <div class="nav-links">
+    <a href="#prizes">Prizes</a>
+    <a href="#how">How It Works</a>
+    <a href="#features">Why WeTrade</a>
+    <a href="#register" class="nav-cta">Register Free</a>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="tw"><div class="tk" id="tk"></div></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hglow"></div>
+  <div class="eyebrow"><div class="pulse"></div>Live Competition &nbsp;·&nbsp; Registration Open Now</div>
+  <div class="h-cat">WeTrade Million Dollar Championship 2026</div>
+  <div class="h-amt">$1,000,000</div>
+  <h1 class="h-title">The World's Biggest Live Trading Competition</h1>
+  <p class="h-sub">Real accounts. Real markets. Real money on the line. Compete against elite traders worldwide in WeTrade's most ambitious championship yet — completely free to enter.</p>
+  <div class="h-btns">
+    <a href="#register" class="btn-p">Register Free — Start Now</a>
+    <a href="#prizes" class="btn-o">View Prize Structure</a>
+  </div>
+  <div class="tpills">
+    <div class="tp"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Globally Regulated</div>
+    <div class="tp"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>30-Day Competition</div>
+    <div class="tp"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Free Entry</div>
+    <div class="tp"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>180+ Countries</div>
+    <div class="tp"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Audited Results</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="sc"><div class="sn">$1M+</div><div class="sl">Total Prize Pool</div></div>
+  <div class="sc"><div class="sn">50K+</div><div class="sl">Traders Registered</div></div>
+  <div class="sc"><div class="sn">180+</div><div class="sl">Countries Eligible</div></div>
+  <div class="sc"><div class="sn">10+</div><div class="sl">Years of Trust</div></div>
+</div>
+
+<!-- COUNTDOWN -->
+<section class="sw" style="text-align:center" id="countdown">
+  <div class="sh">
+    <div class="scat">Competition Begins In</div>
+    <h2 class="stitle">The Clock Is Ticking</h2>
+    <p class="ssub">Registrations close when the competition starts — secure your spot today</p>
+  </div>
+  <div class="cdb">
+    <div class="cbox"><span class="cn" id="cd-d">29</span><span class="cl">Days</span></div>
+    <div class="csep">:</div>
+    <div class="cbox"><span class="cn" id="cd-h">14</span><span class="cl">Hours</span></div>
+    <div class="csep">:</div>
+    <div class="cbox"><span class="cn" id="cd-m">32</span><span class="cl">Minutes</span></div>
+    <div class="csep">:</div>
+    <div class="cbox"><span class="cn" id="cd-s">07</span><span class="cl">Seconds</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRIZES -->
+<section class="sw bg" id="prizes">
+  <div class="podium">
+    <div class="sh">
+      <div class="scat">Prize Structure</div>
+      <h2 class="stitle">Trade Your Way to <span class="o">$1,000,000</span></h2>
+      <p class="ssub">Ranked by return % — your skill matters more than your account size</p>
+    </div>
+    <div class="pg">
+      <div class="pc">
+        <div class="pp">2nd Place</div><span class="pm">🥈</span>
+        <div class="pa">$150,000</div>
+        <div class="pn">+ $50,000 funded trading account</div>
+        <div class="ptag">Cash + Funded Account</div>
+      </div>
+      <div class="pc champ">
+        <div class="pp">🏆 Grand Champion — 1st Place</div><span class="pm" style="font-size:3rem">🥇</span>
+        <div class="pa">$500,000</div>
+        <div class="pn">+ $100K funded account<br>+ Lifetime VIP Membership</div>
+        <div class="ptag" style="background:rgba(250,80,0,0.16);border-color:rgba(250,80,0,0.38);color:var(--amber)">Grand Prize</div>
+      </div>
+      <div class="pc">
+        <div class="pp">3rd Place</div><span class="pm">🥉</span>
+        <div class="pa">$75,000</div>
+        <div class="pn">+ $25,000 funded trading account</div>
+        <div class="ptag">Cash + Funded Account</div>
+      </div>
+    </div>
+    <div class="plower">
+      <div class="pr"><span class="prl">4th Place</span><span class="prv">$30,000</span></div>
+      <div class="pr"><span class="prl">5th Place</span><span class="prv">$20,000</span></div>
+      <div class="pr"><span class="prl">6th–10th Place</span><span class="prv">$10,000 each</span></div>
+      <div class="pr"><span class="prl">11th–25th Place</span><span class="prv">$5,000 each</span></div>
+      <div class="pr"><span class="prl">26th–50th Place</span><span class="prv">$2,500 each</span></div>
+      <div class="pr"><span class="prl">51st–100th Place</span><span class="prv">$1,000 each</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="sw" id="how">
+  <div class="sh">
+    <div class="scat">Process</div>
+    <h2 class="stitle">3 Steps to Compete</h2>
+  </div>
+  <div class="steps-g">
+    <div class="step"><div class="step-bg">01</div>
+      <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <div class="step-t">Create Your WeTrade Account</div>
+      <div class="step-d">Register completely free in under 2 minutes. No deposit required to enter. Open to all experience levels across 180+ countries.</div>
+    </div>
+    <div class="step"><div class="step-bg">02</div>
+      <div class="step-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="step-t">Trade the Live Markets</div>
+      <div class="step-d">Access forex, indices, commodities and crypto via MT4, MT5, or WeTrade's web terminal. Ranked on return % — fair for all account sizes.</div>
+    </div>
+    <div class="step"><div class="step-bg">03</div>
+      <div class="step-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <div class="step-t">Win &amp; Collect Your Prize</div>
+      <div class="step-d">Results are tracked live on our public leaderboard. Verified winners receive full prize payments within 7 business days of competition close.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<div class="ab">
+  <div class="ab-in">
+    <div class="ab-lbl">Recognition</div>
+    <div style="width:1px;height:32px;background:var(--border);flex-shrink:0"></div>
+    <div class="aw"><span class="aw-ico">🏆</span><span class="aw-txt"><strong>Well-Known Broker of the Year</strong><span>2025 Winner</span></span></div>
+    <div class="aw"><span class="aw-ico">⭐</span><span class="aw-txt"><strong>Best Client Support Broker</strong><span>Industry Recognition</span></span></div>
+    <div class="aw"><span class="aw-ico">🥇</span><span class="aw-txt"><strong>Most Trusted Broker 2025</strong><span>Annual Award</span></span></div>
+    <div class="aw"><span class="aw-ico">📈</span><span class="aw-txt"><strong>Featured on NASDAQ</strong><span>New York, USA</span></span></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="sw bg" id="features">
+  <div class="sh">
+    <div class="scat">Why WeTrade</div>
+    <h2 class="stitle">Built on Trust. Since <span class="o">2015</span>.</h2>
+    <p class="ssub">In Trust We Trade</p>
+  </div>
+  <div class="feat-g">
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">Globally Regulated &amp; Audited</div><div class="fd">Licensed and regulated since 2015. All competition results are independently verified and displayed live on our transparent public leaderboard.</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="ft">Ultra-Low Spreads</div><div class="fd">Institutional-grade execution with no requotes and no slippage during high-impact news — the same edge used by professional trading desks.</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="ft">Fair % Return Ranking</div><div class="fd">We rank by return percentage, not absolute profit. A $500 account can outrank a $50,000 account. Pure skill — zero capital advantage.</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="ft">MT4, MT5 &amp; Web Terminal</div><div class="fd">Trade from desktop or mobile using MetaTrader 4, MetaTrader 5, or WeTrade's browser-based terminal with advanced charting tools.</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="ft">WeTrade Rewards Points</div><div class="fd">Earn Reward Points on every lot traded. Redeem them in our exclusive Rewards Mall — gadgets, luxury goods and more, delivered worldwide.</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="ft">WeTrade Social Copy Trading</div><div class="fd">Follow and auto-copy top competition performers in real time through WeTrade Social — the industry's pioneering copy trading platform.</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REGISTER — IFRAME -->
+<section class="reg-sec" id="register">
+  <div class="reg-in">
+    <div class="reg-hd">
+      <div class="scat">Secure Your Entry</div>
+      <h2 class="stitle" style="margin-bottom:0.7rem">Ready to Win <span class="o">$1,000,000?</span></h2>
+      <p class="ssub">Free to enter. No deposit required. Join 50,000+ traders already registered.</p>
+    </div>
+    <div class="iframe-shell">
+      <iframe src="https://register.wetradebroker.com/ld-register?source=GB_LP_DC3_2026&language=en" style="width:100%;min-height:750px;border:none;overflow:hidden" scrolling="no" frameborder="0"></iframe>
+    </div>
+    <div class="reg-foot">
+      By registering you agree to WeTrade's <a href="#">Terms of Service</a> and <a href="#">Competition Rules</a>.<br>
+      Risk Warning: Trading leveraged products carries significant risk. Capital at risk. Past performance is not indicative of future results.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABQAUADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAAQFBgcIAwIB/8QARxAAAQMDAgMGAgUICAQHAAAAAQIDBAAFEQYSByExEyJBUWGBcZEIFaGxshQyNUJScnOSIzM3U4KzwdIWF1XRNDZDY3Si4f/EABsBAAIDAQEBAAAAAAAAAAAAAAAFAwQGAgcB/8QAOBEAAQIEAwUHAwIFBQAAAAAAAQIDAAQFESExQQYSUWFxExQigZGhscHR8OHxBxYyQrIVI1Jy0v/aAAwDAQACEQMRAD8AxlRRRRBBRRRRBBRRRRBHWJGkTJTcWIw7IfdUEttNIKlLJ6AAcyav3hT9HiVOLVz1y8qHHOFJtzKv6VY/9xQ5IHoMnn1Sa58B9b8MtOwosV2G/b728kNyZ0hreFqJ6JWCShHTlgDzz1rSUOW262hxpxK0KAKVJOQR5g1i67W5tlRabQUDicz00+vSNfSKJLut9stYWeAyHX89Yx79Ifh0jQeq0LtjS02O4J3xMqKuyUMb2yo8zjkRnwI64NVjW9eKOk4mu9EzLFI2IfUO1iPK/wDSeSDtV8OZB9Cawnc4Mq2XGTbpzKmJUZ1TTzahzSpJwR86abPVMzsvuOHxpz5jQ/eFNap/dHrpHhVl9oTUUUVoITQUUVLtB6Gmatiyn405iMI6wghxJOcjPhUMxMNy7ZcdNgIsyko9OOhlhO8o6REaKnureGVw07YJF3fuUV9tgpBQhKgTuUE+PxqBVzLTbM0jfZVcZR3OyExIuBuYTuqIv5eXSCiiirEU4KKKKIIKKKKIIKKKKIIKKKKIIKVW23z7lIMe3QpEx4JKuzYbK1YHU4HhzpLVj/R4/wDPzn/wXPxIqpPzJlpZbwFykXi7TpUTc02wo2CjaIkvSWqUIUtenLulKRkkw3AAPlTLWw7t+ipf8Bf4TWPKV0KsLqQWVpA3bZc7w32iobdJU2EKKt6+fK33gooop/Gbgooooggooooggooooggoooogif6b4Zyb5ZIt1jXiMlt9GdpaJKSCQR18CDTFrnSkvSk2PHkPokIfbK0OISQMg4I5+I5fOp9wBu/aRJ1kcV3mlCQyCf1TyUPY4/mp542Wn6w0gZjacvQHA6PPYeSh9x/w1lBVJlip93eVdBNshrlHop2ekJug99lUWcCbnEnFP9WHkSPKKGqX6F0JO1VBfmNS2orTTnZgrQVbzjJxjyyPnUQrTOg7R9R6TgW9SNrqW97376uavkTj2phXaiuSYBbPiJw+sJdkqI3VZtQfF0JFzpich8nyindZ8Op+mrN9aLnMymkuJQtKEFJSD0PPwzge9QitTajtqLxYJtscxiQypAJ8Ffqn2OD7Vlx9pxl5bLqShxtRSpJ6gg4Irig1JydaUHTdQPsfwxLtfQmaU+gy4shQ64jPPqIl3CDTitSayZZUjMeKgyXvgnkke6iPbNaU0Q/I03Idgy3yLXsU4krPJggFRx5JIB5efvUH+jbZRbdJvXd5GHrm7lOR0aRkJ+Z3H5U4/SBvabZokwY3ObdXPyZsJ67P1z8sJ/x0kqjxn5/uycsvufL6RoaMyKZRi+4P6hvf+R8esVgvirxGuut5crTd3uATJfUY0JKQ42hvPdGxQKRyxk/E5pwuHDrVOrLzIv2qLtDjTpZCnQ0zvOQkJHJOEjkB0JqZ8O9JxdL2ZCOzSq4PJCpT3Uk/sg/sj/8AaS664hWzS8j8iSyqdP2hSmULCUoB6blc8E+WD7cq5XUlrmOypjYBAtewuQPa3WPrGz0tLSneay6TfHdubAnTDEnp+sRGXwXfS2TF1A24vHJLsYpHzCj91QPVWkr5ppwfWcXDKjhD7Z3NqPlnwPocGrKsvGOG/MSzdLSuIyo47Zp7tNvqU4Bx8M/CrKkMQbtbFMvIalw5LfMHvJWkjkR9+akNXqdPcAnE3SensRhHI2eolXaUaavdUOvuFY25iMu6ctEu/Xli0wS2JD+7YXFYT3UlRycHwBq9+EmlbnpaBPZuao6lPupWjsVlQwARzyBVatRo/Dziqyud2y4LG9xpSEgrU2ttaU+WSCcH4Grk0fqq2apjyHrYmQlLCghfbICTkjPLBNd7Rzb7rI7IXZUAb21v+0V9j5CVYmFduq0wlSgE30sNPXGPPEWzS7/pCZaoJaEh4tlJcVhPdWlRycHwBqmbtwu1LbLZJuElyAWYzSnV7XlE4SMnHdq9tSXmJYLM9dZwdMdkpCg2nKu8oJGBkeJFV3qrijpq56auVujN3APSYzjSN7KQMqSQM96l1Emag2gIl0XQVYm3S/tDfaaTpLzhcm3LOBOAvbjbDreIDw+0RJ1giaqPPai/kpQDvQVbt27y/dp01ZwuuFgsrly+sWphStCEstMq3LKlBIA9zUj+jd/UXz95j7nKt0oQvG9KVYORkZwfOrtUrs1KT6m0nwC2FhwBzhXRdmJGfpSHlps4oHG5wNyAbXthFD6f4P36cwl+5SmLYlQyGykuOD4gEAfOonq3Tj1l1a/p6K45cHWygIKGiFOFSEqwEgn9rFX5qLiFpaxylxJU8uyUHC2o6CspPkT0B9M5qm79rBocUlartHaFkLaISsbStIbShaSPXBFXaTPVOZdUt1Ph3SUi1hfC2OcLK7TKNJsobYXde8Ao3uQmxvhe3DSFtj4R6onoS7MMa2tnnh5e5zH7qc/aRUhb4IZb7+pcL9IWR+OpZfeKGlbWw2pElyc642lxLUZIJAUMjcSQAfTOR5VG2+NsLttq9PyEtZ/OEgFWPht/1qh3yvzPjbRujoB/ljDI0/ZeTPZur3j1Uf8AHCI/fODl/hsqdtsyLcQkf1Yy04fgDy+2q5lx5ESS5GlMuMPtnattxJSpJ8iDWrtMX63ajtKLlbHStlRKVJUMKQodUqHgar36QmnmHrQzqNhsJkR1pafUB+e2rkCfUHA9/SpqTtDMKmRKzgxJte1iDwIitXNl5VMoZyROAF7XuCOIPvFINoW44lttClrUQEpSMkk9ABViac4QajuTKX7g6xam1DIS6Ct3HqkdPgSD6VKOAekmG4A1ROZC5DpUmGFDkhA5FY9Scj4D1qzr5dbfZba7cbnJRHjNjmpXifAAdST5CvtX2ieQ+ZaUGIwvnjwAjmh7KsOSwm544EXAvYW4k/thFSyOBzoazH1GhbmOjkQpST8Qs4+Ve+FOkb1pXiOWrpHT2TkJ0NPtHc253kdD4H0ODTmvjZYkytiLVcVMZx2ncCsee3P+tWDpm+2vUVsTcbVIDzJO1QIwpCvFKh4Glk5P1dqXUibTdKha5Aw9PrDWRptDemUrkV2Wg3sCTe3I/IhVdv0VL/gL/Cax5Ww7t+ipf8Bf4TWaOFmlf+LNToiv7xBYT2spSTglPgkHzJ5fDJ8Ks7KPol2Jh1w2AsfmKW2cs5NTEsy2LqVvAe0J9H6I1Dqk77bECYwOFSXjsbB+PU+wNWBE4FvKbBlakbQvHNLcQqA9yofdVwgQbTbMJDMSFFazgAJQ2hI+wAVVd543w2ZimrVZHJbCTgPPP9nv9QnaeXxPtXKa1Vqk4e5JskdPcnC/SBVCo1KbT39W8o9fYJxt1hhvnBS+xGVO2u4RbjtGezUksrV8Mkj5kVWlxhS7dMchz4zsaQ0cLbcSUqHtWkuHvEe06tfMLsFwLgElQYWsKCwOu1WBnHlgH7a+cX9Gx9TafdlMMpF1htlbDgHNwDmWz5g88eR96nk9oZuVmRLVFNr65W54YEdIrT2zclNSpmqYq9tMwbaY4g9YzNRRRW4jAwUUUUQQUUUUQQ/8Pbv9SaugTVL2slzsnvLYrkSfhnPtWjp0ZqZCfhvp3NPtqbWPNKhg/fWUq0lw5u/11o+DLUrc8hHYvee9PIk/EYPvWP2oliCiZT0PyPrHpv8AD6eCg7IryPiHwr6e8U7onTTr/Edu0SUZTBfUuRkcils/cTtHvV6alubdmsM26OYxHaKgD+sroke5IHvXK32KLD1Hcb22B285ttChj83aCDj4935VBOP147K3wrI0vvvq7d4D9hPJI9zk/wCGl7r5rE60jSwv8q+0OWJROzNKmHf7iTb1sj7+ZifaRuqb3pqDcwRufaBcA8FjkofMGqb4maaeHElMSIjAuziHGjjkFKOFf/bJ96kf0f7vviz7G4vm2oSGQT+qeSh7Hb86sO5W6HIu0C5PIzJhdp2J8t4wa+NuKpNRcSBhY288R+dY7MonaekMEnxXF/I2V7XI8of7KyxbrdGgRhtZjtJaQPRIwKpvV95RqTjlbIQXviW19LKBnIK095Z/mGP8NWJqi+psWmp10JG5lo9mD+ss8kj5kVnDTt1XbtTwru8pSy1JS66epUM973IzVujSSnUuva2IHUj89Yo7YTzUo7LymQ3gpX/UHD6+kamqv7vwrtF0ukq4ybpcS9JdU4vBRgEnOB3eg6VPWXG3mUPNLSttaQpCknIUDzBFU7xQRrax3iRNhXW6KtLyi4hbTqilnPVBx0APTwxik1HS8p4oZc3FHjryh1tIuVRLJdmWC6kHTTn0h7/5N2H/AKncvmj/AG1O9M2lux2SPamZD0huOClC3SCrBJOOQ8M4+FZyTrDValBKb/ciScAB9XOn+UeJkTT315Jn3ZqIFYIU+oLSP2inqE+GTTudpM66EomJgWJwvx5RlKbtBTJdSnZOTUCBiRjYc8YffpGsITLsskDvuNvIJ9ElBH4jTh9HT9E3b+Oj8JqpLteLrdi2bncJMwtZ7PtnCrbnGcZ+A+VWz9HNSTbLujPeDzZI9Ck/9jVmpSi5Si9is3It/lFKjz7dQ2lEy2LBV8DyRb6RJuNP9m9z/eZ/zUVnGtK8W4kidw+ujEVpTroShexIySEuJUfsBNZtbbccJDaFLKUlR2jOAOp+Fd7JqHc1C/8AcfgRFt6hX+ooNs0D5VFw/Ru/qL5+8x9zlWFr64vWnRt0uEdRS83HIbUOqVKISD7E5qvfo3f1F8/eY+5ypnxd/s5vH8NH+Yms/VEBdb3VZFSPhMaiirU3s3vpNiErPuqM0kkkkkknmSa6wYsmdMahxGVvvvKCG20DJUTXGrS+jpCYe1BcZriQp2PHSlvPhvPMj1wnHua3lQm+5yy3rXsP0jy+lSPf5xuXvbeOfLM+0KbDwXlOsJdvV1RGWeZZjo3kehUTjPwB+NPaeCtgxzutzJ9Cj/bU51jcZNp0tcrlDaDkiPHUtsEZAPmR5Dr7VnORrrV77qnF6hnpKjkhDmwewTgCsjIPVaqhTiHgkA2/MPmN3VGKHRClpxgrJF8/1+BF/wChNHwtIx5TEGXKkIkqStQeKe6QCOWAOufsrhxhSlfDa8BQyNiD7hxJpj4Ey7/cbTcJ95ly5LLjiExlvrKs7d27bnwyR8vSn3i//ZxeP4aP8xNJVodbqyUur3lBSbn0+MofIcZdoa1Mo3EFCrA6YH5zh20UwiNpGzstjCUwWfnsGT86qj6SM99V1tds3KDCGFPlPgVKUU59gn7TVj8LLo3dtCWp5CgVssJjujxCmxt5/EAH3qPccdITL/bo1ztbRfmQgpK2UjvONnn3fMgjp45PpU1LcRLVf/fwsVDHjjFasNrm6HaWxulJsNQLGM/VZv0dp77GsZEBKj2EmKorTnluSQQfkVD3qtlsvNvlhbTiXQdpQUkKB8sedXhwG0bOtSn9QXWOuM6812MdlxOFBBIJUR4ZwAPHr51s9oH2W5BYWf6hYcz+Yx5/szLPuVJstg+E3J4DW/XKLPu36Kl/wF/hNVj9GqO2mxXaWAO0clJbJ9EpyPxGrOu36Kl/wF/hNU99Gy7ttybnY3VhK3QmQyD4kclD5bT7GsNIoUulzO7oUnyuY9DqLiEVeU3tQsDrYRa+rLI1qKxP2d+S/HZf271skBRAIOOYPI4qBf8AJDT3/Vbp82/9tT/VcGdctPy4dsnOQZq0ZYfQspKVg5GSPA4wfQ1nK9ah4gWacuFc7xeYr6Dja48oZ9QehHqOVWKA1OPtqRLPhFjlr1yintG9Iy7iXJqXK7i29p0zi3bBwks1lvUO6xLtc+2iupcSCpGFY6g4T0IyD6GrHrLdl1BxBvM1MO13e9S31H81t5Rx6k9APU8qUapu/EPTV1Vbbrfrm28EhSVJkqKFpPik+I/7Vdm6BNzbwQ/MJK7YDW0LpTaKSk2StiWUlF8Tpf1iN6ojtxNTXSK0AG2ZjzaAPABZA+6m2p3oDh9dtb9vdH5oiRC6d8lxJcW6vqrAyM9eZJHXx50o4g8LLjpe2Kusaci4wmyA8ez7NbeTgHGSCM4Gc+PStWmqyjbqZVTg38Brn1yv5xj10iccZVNpbPZ4nTLpnbnaK8oooppCmCiiiiCCrR4BXfsp82yOK7rye3aB/aTyUPiRj+Wqur6lSknKSQfMGqk9KJm2FMk2vDKkVJdNnETKRfd04g4ERrMVmziJePrzV86ahe5lK+yZ8tieQI+PM+9MXbvf3zn8xrnS2lUQSDinCreJFsrW9zD3aLatVYZSylvcANzje/DQc4f+Ht4+o9XwJy1bWe07N7ny2K5En4Zz7VoCTKDkpW091JwKzBXvtnf71f8AMakqNHTOOh0KsQLZRLsvteaG0tpTW+CbjG1uOhzwiz+OF73ph2NpfQ9u+PsQPxH5VVtfVKUo5UoqPmTXyr8nKplWQ0NIQVuqrq06uaWLXyHADIfmsWZww4jJtEdFmvpWqEnkw+BuUyP2VDqU+WOY+HS5bbcINyjiRAmMSmj+s0sKHvjpWTq6MPPMOBxh1xpY6KQog/MUmqGzjM0suNq3Sc9RD+j7aTMg0GXk9okZY2IHC+Nx+XjWLcWK252jcZlC/wBpKAD86ZtW6p09YoTqbrKZcUpJT+SJwtxwEdNvkfXArOTl5vDqNjl1nLR02qkLI++kJJJyeZqizsoN8KeduOQ+sMprb4lspl2LE6k39gBf1jtcHWHpz70WP+TMLcUptndu7NJPJOfHFSnhTqpvS+oFKl7vyCWkNvlIyUYPdXjxxk+xNQ+itTMSzb7JZXkRaMJKzrsrMJmWjZQN+XpwjXFvnQ7jFRKgymZLCxlK2lhQPyrxKhW4xJSHmI7bL7akPq2hIUkjByayhElyoi+0iyXo6/2mllJ+yuky43CYkJlzpUgDoHXVL+81kv5SUF+F6w6Y/Mb3+fkKbsuXurrh8RcfAOMiHM1NEafbkNsyGkJdbUFJWAXAFAjqDUq4u/2c3j+Gj/MTWakOLRnYtSc9cHFfVOuqBSp1ZB8Co0wf2fLs6JsuapNrcLc9bcIUS21aWKaZEM5hQvvf8idLaX4x4qUcM9Uf8K6lRMdSpcR5HYyUp67SQdw9QQD8x41F6KfvsImG1NOC4OEZWVmXJV5LzRspJuI1xabnbbzBTKt0tmXHWOqFZ6+BHUH0NNDmhdHGSqWuwQgvO490hH8udv2VmONIkRnO0jPusrH6zayk/MV3l3W6S2+zlXKZIR+y6+pQ+RNZMbKutLPYvlIPW/scY3SttWH0DvEsFKHMW9wbRp2yais069P2K0LadEJgKcUzjskc8BCccjj05Dp8EXF/+zi8fw0f5iazKhxaCShak58jivSn3lJKVPOKB6gqNdo2US1MIdQ5gkg4jO3O+sQObaqellsuNYqBFwbAA4DC2nXGJdwv1u9pG4rS8hb9skEdu0k80nwWnPj6eI+ArQ1hvtovsUSbTPZlIxkhCu8n95J5j3FZHr2y66y4HGXFtrHRSVEEe9Xqrs8zPr7VJ3V8cweohbRdqZimo7FSd9GgyI6H6RsUIQXO02J3gY3Y50zDVdmXqaPp6NKRJnOhalpaUFJaCUk94+fLp1rL0i8XeQ0WpF0nPNkYKVyFqHyJpGhSkK3IUUnzBxSlrY4AHtHb4YWH6+0OX9uySOyZsL43OnAYe+PSNg3b9FS/4C/wmsjWm4S7VcmLjAeUzJYWFtrHgf8AUeGK5GQ+RgvukfvmuVOqPRRTkOJUreCraW48zxhBXa+aottaUbhRfW+duQ4RpLQnE6x3+O2xcH2rZcsYU26ra2s+aFHl7Hn8etTpxpiS0A62282eYCkhQNYzpXDudyhp2w7hLjp8mnlIH2GlM3se2te/Lr3eRF/Q/vDeT22dQgImW97mDb1FrfEbASmNDYJAZjsp5kgBKR6+VU1x01hpa62xNnhJbuU5tYUiU2e5H88KH52RywOXj1Aqoplwnzf/ABk2TJx/euqX95pNU9N2WTKvB9xwqIxFsPXG5ivVdrlzjBYabCUnA3x9MLD3jRnAC7wZeh2bU06gTIK3A62T3iFLKgr1Hex7U7cYLvBteg7k3KcR2sxlUdhonvLUoYyB6dc+lZhjPvxnkvR3nGXU80rbUUqHwIr1Mlypj3bS5L0hzGN7qytXzNDmyyVz/ee08JO9a2N73z4Xj41tYtFP7r2fiCd298LWtlxtHGiiitZGPgooooggooooggooooggooooggooooggooooggooooggrrDYXKlsxmsdo84ltOTyyTgVypXZnm494hSHlbW2pDa1nGcAKBNcrJCSRnHbYBWArK8drbZp1xnSIURCXH2ELWpO787acEJ8ySeQ8aTCI6beub3Q0h0NEZ57iCf9DThAnssTLs92ykF9hxLCgDkqLiSPh0pRdrpCn6f5At3J2UlySgJ7iylCh2g8irdzHnkjkcCt2jwXa2GH6/mkXAzLlu+9iL658PP58oZIjSH3w25JajJOf6R0KKR/KCfspZebWLYoNruESQ6QlRbZDmQlSQoHvIAxgjxzzpupx1FJZl3Pto696OwYRnBHNLSEnr6g1Mre7QWOFj9Irp3OxVceK49Mb/A9YUSNPvtOOsInQn5TTZcXHQpYWEhO443JCSQOeASabhEdNvM7u9kHQ1157sZ+4VI5l7tTlyuD0eM2y85HKI8z+kJ3bAkgpJwNw3JBxyJB9aa7a5DkWV+2yZiIbn5Qh9pxxC1IICVJUk7ASDzBHLzqs269u3WDppjjnl+/GLbzDG/uoI11wwyz19srQk+rZZdgsoQHHJyQphCTzOVlAHxyk19uEBuK3uRcYUpQXsUhlS8pP+JIBHLqMilVzlx1Tra1FlrS3CZQ1+VISQc71LK0jkeRUcdCcDpSm9yYb9sX28uBNnl1JbdiRlNEIwrd2mUICiTt8CevPz77Ry6bjA8ueuHDmDEZaa3VAEXHPljbHjyIPLOEz1kbatqbh9c25TK1rbRtD2VLSlJKRlvrhSeuBz601NJ3uJRuSjcQNyjgD1PpTg/KYVpiJCSv+nbmvuqTg8kqQyEnPTqhXyptqVnf3TvHU/MQv7m8NwYWHxjDmzYrg7KuUZKEB23IcXIBVj8w4UB5nkTjyBPhSR2I63BYmLKQh5a0IGe93duTjy72PY+VSORqCI0i2y425yU4429cm1JwFFpHZhOfHcCtR/f9KadTyIbs5uNbXlvQIjKWWFqTtKhzUpWPDK1KPyqBl15SgFCw+2B98uIid9mXQglCrnrxxHtcHgY+Xazotrkhh66wHJMdZbcYbDu7cDggEoCeXPx8KbmEJceQ2t1DKVHBWsHan1OAT8gak2sJzFxl3CQxdLO4w7IW6023ALb5SVEgFfYg5weeVc/M1FqklVLW3def5yERzaW0OkN5fnM/TpDrdLOm3xWX1XWC+Xmw6020Hdy0FRTnvIAHNJ6kHlXRrT7zv5M2i4QfyuS2lbMUqWFr3fmjJTsyfLdXG9ymJMa1IZXuVHhBp0YI2q7RxWPXkoU8xb1aET7atcVrtGIjaEzFdoSy8lPdUUZwoJVjlg5Hn0qFS30oBFycdBpl5e/CJ0Il1OEGwGGp1z449cBrEdtsF+fPbhM7UuLJypZwlAAJUpR8AACSfIGvMiG/HuLkB5IS+26WlDPIKBxTjZZsCFBnOykuyJUkBhKG3NhS2ea1bik8zhKceRVXq8T7fMlW+ewlbLqUobkNrVvP9HgJXuwAcpwPPKST1qXtHO1I3fD9c/TTrEHZNdkDveLhyy9dc8ukfJOnnW35EaPcYEyVHKg5HZUsL7ud2N6UhWMHkCTypLbbYZkWRKXNixGGFoQpb285UvcQAEJUf1FU9l+0xNVP6gTd2JSW5a5TEdlp3etW4qQFb0JATnGeZ5ZwDSTTM5mPaLhFVMgxnnnmFoMyL26ClIcCuWxYB7yeePPnUIde7MkXv4dLHE46aDlE5ZY7UA2t4tbjAYa6nnDLMZQw+ptuSzJSMYcaCgk/zAH7K40qupCpzixIiyN2CVxmi22eXgnanHyFJavIJKRf8+IXrACjb8+fmCiiiuo5goooogj/2Q==" alt="WeTrade" class="ft-logo">
+      <div class="ft-tag">Established 2015 &nbsp;·&nbsp; Globally Regulated<br>Trusted by traders in 180+ countries worldwide</div>
+    </div>
+    <div class="ft-links">
+      <div class="fcol">
+        <h4>Competition</h4>
+        <a href="#prizes">Prize Structure</a>
+        <a href="#how">How It Works</a>
+        <a href="#countdown">Countdown</a>
+        <a href="#">Rules &amp; Terms</a>
+      </div>
+      <div class="fcol">
+        <h4>WeTrade</h4>
+        <a href="https://wetrade.com">Main Website</a>
+        <a href="#">WeTrade Rewards</a>
+        <a href="#">WeTrade Social</a>
+        <a href="#">Customer Support</a>
+      </div>
+      <div class="fcol">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Risk Disclosure</a>
+        <a href="#">Regulation Info</a>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <div class="ft-legal">Risk Warning: Trading leveraged financial products such as forex and CFDs carries a high degree of risk and is not suitable for all investors. You may sustain a loss of some or all of your invested capital. Past performance is not indicative of future results. Please ensure you understand the risks involved and seek independent advice if necessary. WeTrade and wetradebroker.com are registered trademarks. All competition prizes are subject to verification and applicable terms and conditions.</div>
+    <div class="fbadges">
+      <div class="fb">Regulated</div><div class="fb">MT4</div><div class="fb">MT5</div><div class="fb">Since 2015</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// FLAME CANVAS
+const cv=document.getElementById('fc'),ctx=cv.getContext('2d');
+let W,H;
+function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+rsz();addEventListener('resize',rsz);
+class P{
+  constructor(){this.rst(true)}
+  rst(init){
+    this.x=Math.random()*W;
+    this.y=init?Math.random()*H:H+20;
+    this.vx=(Math.random()-0.5)*0.5;
+    this.vy=-(Math.random()*1.0+0.3);
+    this.life=0;this.max=Math.random()*220+80;
+    this.r=Math.random()*2+0.4;
+    this.smoke=Math.random()>0.38;
+  }
+  upd(){
+    this.life++;
+    this.x+=this.vx+Math.sin(this.life*0.04)*0.35;
+    this.y+=this.vy;
+    if(this.y<-30||this.life>this.max)this.rst(false);
+  }
+  draw(){
+    const t=this.life/this.max;
+    const a=t<0.2?t/0.2:1-(t-0.2)/0.8;
+    if(!this.smoke){
+      const r=Math.floor(250-t*30),g=Math.floor(80+t*100);
+      ctx.beginPath();ctx.arc(this.x,this.y,this.r*(1+t*0.5),0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},0,${a*0.5})`;ctx.fill();
+    }else{
+      ctx.beginPath();ctx.arc(this.x,this.y,this.r*(2+t*4),0,Math.PI*2);
+      ctx.fillStyle=`rgba(55,18,0,${a*0.08})`;ctx.fill();
+    }
+  }
+}
+const ps=Array.from({length:130},()=>new P());
+function fr(){
+  ctx.clearRect(0,0,W,H);
+  ['rgba(250,80,0,0.07)','rgba(255,170,60,0.035)'].forEach((c,i)=>{
+    const gx=i===0?0:W,gy=H;
+    const g=ctx.createRadialGradient(gx,gy,0,gx,gy,W*0.5);
+    g.addColorStop(0,c);g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  });
+  ps.forEach(p=>{p.upd();p.draw()});
+  requestAnimationFrame(fr);
+}
+fr();
+
+// TICKER
+const td=[
+  {s:'EUR/USD',v:'1.0842',c:'+0.12%',u:true},{s:'GBP/USD',v:'1.2631',c:'+0.08%',u:true},
+  {s:'USD/JPY',v:'151.24',c:'-0.22%',u:false},{s:'GOLD',v:'$2,318',c:'+0.45%',u:true},
+  {s:'BTC/USD',v:'$67,420',c:'+1.83%',u:true},{s:'S&P 500',v:'5,248',c:'+0.31%',u:true},
+  {s:'NASDAQ',v:'18,190',c:'+0.55%',u:true},{s:'OIL WTI',v:'$82.17',c:'-0.14%',u:false},
+  {s:'AUD/USD',v:'0.6532',c:'-0.09%',u:false},{s:'USD/CAD',v:'1.3512',c:'+0.06%',u:true},
+];
+const tkEl=document.getElementById('tk');
+const th=td.map(d=>`<span class="ti"><span class="ts">${d.s}</span><span>${d.v}</span><span class="${d.u?'up':'dn'}">${d.c}</span></span>`).join('');
+tkEl.innerHTML=th+th;
+
+// COUNTDOWN
+const tgt=new Date('2026-05-01T00:00:00Z').getTime();
+function tick(){
+  const diff=Math.max(0,tgt-Date.now());
+  document.getElementById('cd-d').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+// SCROLL REVEAL (staggered)
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')});
+},{threshold:0.08});
+document.querySelectorAll('.sc,.pc,.step,.feat').forEach((el,i)=>{
+  el.style.transitionDelay=(i%3)*0.1+'s';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
