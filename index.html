@@ -1149,68 +1149,113 @@ const LANGS = {
   }
 };
 
+// ── LANGUAGE SWITCHER ─────────────────────────────────────────────────────
 let currentLang = 'en';
 
+// Cache EN banner src on load so we can restore it
+let enBannerSrc = '';
+window.addEventListener('load', function() {
+  const bi = document.getElementById('banner-img');
+  if (bi) enBannerSrc = bi.src;
+});
+
 function toggleLangMenu() {
-  document.getElementById('langSwitcher').classList.toggle('open');
+  const sw = document.getElementById('langSwitcher');
+  if (sw) sw.classList.toggle('open');
 }
-// Close when clicking outside
+
+// Close dropdown when clicking outside
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('#langSwitcher')) {
-    document.getElementById('langSwitcher').classList.remove('open');
-  }
+  const sw = document.getElementById('langSwitcher');
+  if (sw && !sw.contains(e.target)) sw.classList.remove('open');
 });
 
 function setLang(lang) {
-  if (!LANGS[lang]) return;
-  currentLang = lang;
   const t = LANGS[lang];
+  if (!t) return;
+  currentLang = lang;
 
-  // Update flag + code in button
-  document.getElementById('currentFlag').textContent = t.flag;
-  document.getElementById('currentLang').textContent = t.code;
+  // Update button label
+  const flagEl = document.getElementById('currentFlag');
+  const codeEl = document.getElementById('currentLang');
+  if (flagEl) flagEl.textContent = t.flag;
+  if (codeEl) codeEl.textContent = t.code;
 
   // Mark active option
-  document.querySelectorAll('.lang-opt').forEach(el => {
+  document.querySelectorAll('.lang-opt').forEach(function(el) {
     el.classList.toggle('active', el.dataset.lang === lang);
   });
 
-  // Swap all i18n text
-  document.querySelectorAll('[data-i18n]').forEach(el => {
+  // Translate all tagged elements safely (preserve child HTML)
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
     const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
+    const val = t[key];
+    if (val === undefined || val === '') return;
+    // Only update text node, keep child elements intact
+    // Walk child nodes and update the first text node
+    let updated = false;
+    el.childNodes.forEach(function(node) {
+      if (node.nodeType === 3 && node.textContent.trim()) { // text node
+        node.textContent = val;
+        updated = true;
+      }
+    });
+    // If no text node found, set textContent (element has no children)
+    if (!updated && !el.querySelector('*')) {
+      el.textContent = val;
+    }
   });
 
-  // Swap banner image using pre-loaded hidden imgs
-  const mainBanner = document.getElementById('banner-img');
-  if (mainBanner) {
-    if (lang === 'en') {
-      mainBanner.src = document.getElementById('banner-en-src').dataset.src;
-    } else {
-      const altImg = document.getElementById('banner-' + lang);
-      if (altImg) mainBanner.src = altImg.src;
+  // Swap banner image
+  try {
+    const mainBanner = document.getElementById('banner-img');
+    if (mainBanner) {
+      if (lang === 'en') {
+        if (enBannerSrc) mainBanner.src = enBannerSrc;
+      } else {
+        const alt = document.getElementById('banner-' + lang);
+        if (alt && alt.src) mainBanner.src = alt.src;
+      }
     }
-  }
+  } catch(e) {}
 
-  // Swap iframe src (reload form in selected language)
-  const iframe = document.getElementById('reg-iframe');
-  if (iframe && t.iframeSrc) {
-    document.getElementById('iframe-loader').style.display = 'flex';
-    iframe.style.display = 'none';
-    iframe.src = t.iframeSrc;
-  }
+  // Swap iframe language
+  try {
+    const iframe = document.getElementById('reg-iframe');
+    const loader = document.getElementById('iframe-loader');
+    if (iframe && t.iframeSrc) {
+      if (loader) { loader.style.display = 'flex'; }
+      iframe.style.display = 'none';
+      iframe.src = t.iframeSrc;
+    }
+  } catch(e) {}
 
-  // Close dropdown
-  document.getElementById('langSwitcher').classList.remove('open');
-
-  // Update html lang attr
+  // Close dropdown, update <html lang>
+  const sw = document.getElementById('langSwitcher');
+  if (sw) sw.classList.remove('open');
   document.documentElement.lang = lang;
+
+  // Thai font body class
+  document.body.classList.toggle('th-active', lang === 'th');
+
+  // Persist choice
+  try { localStorage.setItem('wetrade-lang', lang); } catch(e) {}
 }
 
-// Store EN banner src for language switching
-const enSrcEl = document.getElementById('banner-en-src');
-const bannerImgEl = document.getElementById('banner-img');
-if (enSrcEl && bannerImgEl) enSrcEl.dataset.src = bannerImgEl.src;
+// ── LANGUAGE AUTO-DETECTION ──────────────────────────────────────────────
+// Priority: 1) URL ?lang=xx  2) URL #xx  3) localStorage  4) default EN
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var urlLang = (params.get('lang') || window.location.hash.replace('#','')).toLowerCase();
+  var saved;
+  try { saved = localStorage.getItem('wetrade-lang'); } catch(e) {}
+
+  var target = (urlLang && LANGS[urlLang]) ? urlLang
+             : (saved   && LANGS[saved])   ? saved
+             : 'en';
+
+  if (target !== 'en') setLang(target);
+})();
 
 // SCROLL REVEAL
 const io=new IntersectionObserver(entries=>{
