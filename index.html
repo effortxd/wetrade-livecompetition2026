@@ -105,13 +105,23 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 4
 
 /* ── PRIZES ── */
 .prizes-sec{padding:5rem 2rem;text-align:center;background:var(--d1)}
-.prize-grid{max-width:660px;margin:0 auto}
-.prize-weekly{display:flex;align-items:center;gap:0.7rem;background:rgba(255,170,60,0.08);border:1px solid rgba(255,170,60,0.2);border-radius:6px;padding:0.75rem 1.4rem;margin-bottom:1.8rem;width:100%}
-.prize-weekly-ico{font-size:1.2rem;flex-shrink:0}
-.prize-weekly-txt strong{display:block;font-size:0.9rem;font-weight:700;color:var(--amber)}
-.prize-weekly-txt span{font-size:0.72rem;color:var(--muted)}
+.prizes-sec{text-align:center}
+.prize-grid{max-width:660px;margin:0 auto;text-align:left}
+.prize-weekly{
+  display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;
+  background:rgba(255,170,60,0.08);
+  border:1px solid rgba(255,170,60,0.25);
+  border-radius:100px;
+  padding:0.6rem 1.6rem;
+  margin:0 0 1.8rem;
+}
+.prize-weekly-ico{font-size:1rem;flex-shrink:0}
+.prize-weekly-txt{display:flex;align-items:center;gap:0.5rem}
+.prize-weekly-txt strong{font-size:0.85rem;font-weight:700;color:var(--amber);white-space:nowrap}
+.prize-weekly-txt span{font-size:0.78rem;color:var(--muted);white-space:nowrap}
+.prize-weekly-sep{color:rgba(255,170,60,0.3);font-size:0.7rem}
 /* Table-style rows: medal+pos | credit col | cash col */
-.prize-rows{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2.2rem;width:100%}
+.prize-rows{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2.2rem;width:100%;text-align:left}
 .prize-col-heads{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;padding:0 1.5rem 0.4rem;text-align:right}
 .prize-col-heads span:first-child{text-align:left}
 .prize-col-heads span{font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
@@ -306,10 +316,10 @@ footer{background:var(--d1);border-top:1px solid var(--border);padding:2.5rem 4r
   <!-- CTA overlay — sits in the empty left area -->
   <div class="banner-cta">
     <div class="banner-cta-label" data-i18n="hero.label">2026 Season 1 · Live Now</div>
-    <h1 class="banner-cta-h1" data-i18n="banner.h1">$1,000,000<br><span data-i18n="banner.h1b">Trading Competition</span></h1>
+    <h1 class="banner-cta-h1">$1,000,000<br><span data-i18n="banner.h1b">Trading Competition</span></h1>
     <p class="banner-cta-sub" data-i18n="banner.sub">Trade. Compete. Win.</p>
     <div class="banner-cta-actions">
-      <a href="https://portal.wetrade.com/login?language=en" id="banner-cta-btn" target="_blank" rel="noopener" class="btn-main" data-i18n="hero.cta">Register Now</a>
+      <a href="https://portal.wetrade.com/login?language=en" id="banner-cta-btn" target="_blank" rel="noopener" class="btn-main" data-i18n="hero.cta">Join Now</a>
       <span class="banner-microcopy" data-i18n="hero.micro">You are still in the run!</span>
     </div>
   </div>
@@ -326,10 +336,11 @@ footer{background:var(--d1);border-top:1px solid var(--border);padding:2.5rem 4r
     <!-- Weekly -->
     <div class="prize-weekly">
       <span class="prize-weekly-ico">🏅</span>
-      <span class="prize-weekly-txt">
+      <div class="prize-weekly-txt">
         <strong data-i18n="prizes.weekly.title">$2,000 Weekly Prizes</strong>
+        <span class="prize-weekly-sep">·</span>
         <span data-i18n="prizes.weekly.sub">Highest weekly profit &amp; volume each week</span>
-      </span>
+      </div>
     </div>
 
     <!-- Final leaderboard -->
@@ -368,7 +379,7 @@ footer{background:var(--d1);border-top:1px solid var(--border);padding:2.5rem 4r
       </div>
     </div>
 
-    <p style="font-size:0.65rem;color:var(--muted);margin-bottom:2rem" data-i18n="prizes.disclaimer">*Trading credit subject to terms. Cash option available upon request.</p>
+    <p style="font-size:0.65rem;color:var(--muted);margin-bottom:2rem" data-i18n="prizes.disclaimer">All competition mechanics and prize allocations are subject to our terms and conditions.</p>
 
     <a href="https://portal.wetrade.com/login?language=en" target="_blank" rel="noopener" class="btn-sec" id="secure-btn" data-i18n="prizes.cta">Secure Your Spot</a>
   </div>
@@ -384,7 +395,7 @@ footer{background:var(--d1);border-top:1px solid var(--border);padding:2.5rem 4r
     <div class="foot-links">
       <div class="fcol">
         <h4 data-i18n="footer.col1">Competition</h4>
-        <a href="#register" data-i18n="footer.register">Register Now</a>
+        <a href="#register" data-i18n="footer.register">Join Now</a>
         <a href="#how" data-i18n="footer.how">How It Works</a>
         <a href="#prizes" data-i18n="footer.prizes">Prize Structure</a>
         <a href="https://shorturl.at/YJEDM" target="_blank" rel="noopener" data-i18n="footer.rules">Rules &amp; T&amp;C</a>
@@ -416,7 +427,7 @@ const T = {
     'hero.h1':'$1,000,000','hero.h1b':'Trading Competition',
     'hero.sub':'Trade. Compete. Win.',
     'banner.h1':'$1,000,000','banner.h1b':'Trading Competition','banner.sub':'Trade. Compete. Win.',
-    'hero.cta':'Register Now','hero.micro':'You are still in the run!',
+    'hero.cta':'Join Now','hero.micro':'You are still in the run!',
     'form.tag':'Registration Open','form.title':'Create Your Account',
     'form.sub':'Takes less than 2 minutes','form.loading':'Loading form…',
     'form.legal':"By registering you agree to WeTrade's",
@@ -437,11 +448,11 @@ const T = {
     'prizes.3rd':'3rd Place','prizes.3rd.note':'or $10,000 cash',
     'prizes.4th':'4th & 5th Place','prizes.4th.note':'or $5,000 cash',
     'prizes.6th':'6th–10th Place','prizes.6th.note':'or $3,000 cash',
-    'prizes.disclaimer':'*Trading credit subject to terms. Cash option available upon request.',
+    'prizes.disclaimer':'All competition mechanics and prize allocations are subject to our terms and conditions.',
     'prizes.cta':'Secure Your Spot',
     'footer.tag':'Established 2015 · Globally Regulated
 In Trust We Trade',
-    'footer.col1':'Competition','footer.register':'Register Now','footer.how':'How It Works',
+    'footer.col1':'Competition','footer.register':'Join Now','footer.how':'How It Works',
     'footer.prizes':'Prize Structure','footer.rules':'Rules & T&C',
     'footer.col2':'WeTrade','footer.main':'Main Website','footer.rewards':'WeTrade Rewards',
     'footer.social':'WeTrade Social','footer.support':'Customer Support',
@@ -475,7 +486,7 @@ In Trust We Trade',
     'prizes.3rd':'Peringkat 3','prizes.3rd.note':'atau $10.000 tunai',
     'prizes.4th':'Peringkat 4 & 5','prizes.4th.note':'atau $5.000 tunai',
     'prizes.6th':'Peringkat 6–10','prizes.6th.note':'atau $3.000 tunai',
-    'prizes.disclaimer':'*Kredit trading berlaku syarat. Opsi tunai tersedia atas permintaan.',
+    'prizes.disclaimer':'Semua mekanisme kompetisi dan alokasi hadiah tunduk pada syarat dan ketentuan kami.',
     'prizes.cta':'Amankan Tempat Anda',
     'footer.tag':'Didirikan 2015 · Teregulasi Global
 Dalam Kepercayaan Kami Berdagang',
@@ -492,7 +503,7 @@ Dalam Kepercayaan Kami Berdagang',
     'hero.h1':'$1,000,000','hero.h1b':'Competición de Trading',
     'hero.sub':'Opera. Compite. Gana.',
     'banner.h1':'$1,000,000','banner.h1b':'Competición de Trading','banner.sub':'Opera. Compite. Gana.',
-    'hero.cta':'Regístrate Ahora','hero.micro':'¡Todavía estás en la carrera!',
+    'hero.cta':'Únete Ahora','hero.micro':'¡Todavía estás en la carrera!',
     'form.tag':'Registro Abierto','form.title':'Crea Tu Cuenta',
     'form.sub':'Menos de 2 minutos','form.loading':'Cargando formulario…',
     'form.legal':'Al registrarte aceptas los',
@@ -513,11 +524,11 @@ Dalam Kepercayaan Kami Berdagang',
     'prizes.3rd':'3er Lugar','prizes.3rd.note':'o $10,000 en efectivo',
     'prizes.4th':'4to y 5to Lugar','prizes.4th.note':'o $5,000 en efectivo',
     'prizes.6th':'6to–10mo Lugar','prizes.6th.note':'o $3,000 en efectivo',
-    'prizes.disclaimer':'*Crédito de trading sujeto a términos. Opción en efectivo disponible bajo solicitud.',
+    'prizes.disclaimer':'Todos los mecanismos de la competición y la asignación de premios están sujetos a nuestros términos y condiciones.',
     'prizes.cta':'Asegura Tu Lugar',
     'footer.tag':'Establecido en 2015 · Regulado Globalmente
 En Confianza Operamos',
-    'footer.col1':'Competición','footer.register':'Regístrate Ahora','footer.how':'Cómo Funciona',
+    'footer.col1':'Competición','footer.register':'Únete Ahora','footer.how':'Cómo Funciona',
     'footer.prizes':'Estructura de Premios','footer.rules':'Reglas y T&C',
     'footer.col2':'WeTrade','footer.main':'Sitio Principal','footer.rewards':'WeTrade Rewards',
     'footer.social':'WeTrade Social','footer.support':'Atención al Cliente',
@@ -530,7 +541,7 @@ En Confianza Operamos',
     'hero.h1':'$1,000,000','hero.h1b':'การแข่งขันเทรด',
     'hero.sub':'เทรด. แข่งขัน. ชนะ.',
     'banner.h1':'$1,000,000','banner.h1b':'การแข่งขันเทรด','banner.sub':'เทรด. แข่งขัน. ชนะ.',
-    'hero.cta':'สมัครเลย','hero.micro':'คุณยังอยู่ในการแข่งขัน!',
+    'hero.cta':'เข้าร่วมเลย','hero.micro':'คุณยังอยู่ในการแข่งขัน!',
     'form.tag':'เปิดรับสมัคร','form.title':'สร้างบัญชีของคุณ',
     'form.sub':'ใช้เวลาน้อยกว่า 2 นาที','form.loading':'กำลังโหลดแบบฟอร์ม…',
     'form.legal':'การลงทะเบียนถือว่าคุณยอมรับ',
@@ -551,11 +562,11 @@ En Confianza Operamos',
     'prizes.3rd':'อันดับ 3','prizes.3rd.note':'หรือเงินสด $10,000',
     'prizes.4th':'อันดับ 4 & 5','prizes.4th.note':'หรือเงินสด $5,000',
     'prizes.6th':'อันดับ 6–10','prizes.6th.note':'หรือเงินสด $3,000',
-    'prizes.disclaimer':'*เครดิตซื้อขายเป็นไปตามเงื่อนไข ตัวเลือกเงินสดมีให้ตามคำขอ',
+    'prizes.disclaimer':'กลไกการแข่งขันและการจัดสรรรางวัลทั้งหมดเป็นไปตามข้อกำหนดและเงื่อนไขของเรา',
     'prizes.cta':'จองที่นั่งของคุณ',
     'footer.tag':'ก่อตั้งปี 2015 · ได้รับการกำกับดูแลทั่วโลก
 ในความไว้วางใจเราเทรด',
-    'footer.col1':'การแข่งขัน','footer.register':'สมัครเลย','footer.how':'วิธีการ',
+    'footer.col1':'การแข่งขัน','footer.register':'เข้าร่วมเลย','footer.how':'วิธีการ',
     'footer.prizes':'โครงสร้างรางวัล','footer.rules':'กฎและข้อกำหนด',
     'footer.col2':'WeTrade','footer.main':'เว็บไซต์หลัก','footer.rewards':'WeTrade Rewards',
     'footer.social':'WeTrade Social','footer.support':'ฝ่ายดูแลลูกค้า',
