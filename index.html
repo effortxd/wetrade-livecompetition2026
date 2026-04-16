@@ -1,14 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+ <!-- ✅ WeTrade GA4 — paste inside <head> of your page -->
+
+<!-- 1. Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVM0YSZCHH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-MVM0YSZCHH');
+</script>
+
+<!-- 2. WeTrade Event Tracking (scroll + clicks + page views + UTM) -->
+<script>
+(function(){
+  'use strict';
+
+  /* UTM — captured once on load */
+  var UTM=(function(){
+    var p=new URLSearchParams(window.location.search);
+    return{utm_source:p.get('utm_source')||undefined,utm_medium:p.get('utm_medium')||undefined,utm_campaign:p.get('utm_campaign')||undefined};
+  })();
+
+  /* Base params — attached to every event */
+  function base(){return Object.assign({page_location:window.location.href,page_title:document.title},UTM);}
+
+  /* Safe send */
+  function send(name,params){
+    if(typeof gtag!=='function')return;
+    gtag('event',name,Object.assign(base(),params||{}));
+  }
+
+  /* ── SCROLL TRACKING ── */
+  var SCROLLS=[25,50,75,100],scrollFired=new Set();
+  function scrollPct(){var el=document.documentElement,max=el.scrollHeight-el.clientHeight;return max<=0?100:Math.min(100,Math.round(window.scrollY/max*100));}
+  function onScroll(){var p=scrollPct();SCROLLS.forEach(function(m){if(p>=m&&!scrollFired.has(m)){scrollFired.add(m);send('scroll_'+m,{scroll_depth:m});}});}
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* ── CLICK TRACKING ── */
+  var CLICKS=[
+    {event:'click_login',   attr:'login',    sel:['.btn-login','#btn-login','a[href*="/login"]','button[class*="login"]']},
+    {event:'click_join',    attr:'join',     sel:['.btn-join','#btn-join','a[href*="/register"]','a[href*="/signup"]','a[href*="/join"]','button[class*="register"]']},
+    {event:'click_deposit', attr:'deposit',  sel:['.btn-deposit','#btn-deposit','a[href*="/deposit"]','button[class*="deposit"]']},
+    {event:'click_copy_trade',         attr:'copy-trade', sel:['.btn-copy-trade','a[href*="/copy"]','button[class*="copy"]']},
+    {event:'click_redirect_platform',  attr:'platform',   sel:['.btn-platform','a[href*="/platform"]','button[class*="platform"]']},
+  ];
+  function elInfo(el){return{element_text:(el.innerText||el.value||'').trim().slice(0,100)||undefined,element_id:el.id||undefined,element_href:el.href||undefined};}
+  function attach(){
+    CLICKS.forEach(function(def){
+      function bind(el){if(el._wt)return;el._wt=true;el.addEventListener('click',function(){send(def.event,elInfo(el));});}
+      document.querySelectorAll('[data-track="'+def.attr+'"]').forEach(bind);
+      def.sel.forEach(function(s){try{document.querySelectorAll(s).forEach(bind);}catch(e){}});
+    });
+  }
+
+  /* ── PAGE VIEW TRACKING ── */
+  var PAGES={'/leaderboard':'Leaderboard','/login':'Login','/competition':'Competition'};
+  function vpName(path){for(var k in PAGES){if(path.startsWith(k))return PAGES[k];}return undefined;}
+  function trackPV(){var path=window.location.pathname;send('page_view',{page_path:path,virtual_page_name:vpName(path)});}
+
+  /* ── SPA SUPPORT ── */
+  if(window.MutationObserver){new MutationObserver(function(ms){if(ms.some(function(m){return m.addedNodes.length;}))attach();}).observe(document.body,{childList:true,subtree:true});}
+  var _push=history.pushState;
+  history.pushState=function(){_push.apply(history,arguments);setTimeout(trackPV,0);};
+  window.addEventListener('popstate',trackPV);
+
+  /* ── HOW TO TAG BUTTONS (data-track) ──────────────────────────
+     Add data-track to any element — no other code needed:
+       <button data-track="login">Log In</button>
+       <button data-track="deposit">Deposit</button>
+       <a data-track="join" href="/register">Join Now</a>
+       <a data-track="copy-trade">Copy Trade</a>
+       <a data-track="platform">Go to Platform</a>
+  ──────────────────────────────────────────────────────────────── */
+
+  /* ── INIT ── */
+  function init(){trackPV();attach();onScroll();}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
